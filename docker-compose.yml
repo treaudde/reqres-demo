@@ -10,6 +10,7 @@ services:
       - ./config/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
     environment:
       REDIS_HOST: regres-redis
+      REQRES_URL: 'https://reqres.in'
 
   reqres-redis:
     container_name: reqres-redis
