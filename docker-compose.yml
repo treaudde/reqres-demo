@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  reqres-backend:
+    container_name: reqres-app
+    image: treaudde/simple-development-environment:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./config/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+    environment:
+      REDIS_HOST: regres-redis
+
+  reqres-redis:
+    container_name: reqres-redis
+    image: redis:latest
+
+
+
+
