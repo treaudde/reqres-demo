@@ -14,7 +14,6 @@ use Illuminate\FoundaÎtion\Testing\RefreshDatabase;
 
 class ReqResTest extends TestCase
 {
-
     /**
      * Test a successful login
      */

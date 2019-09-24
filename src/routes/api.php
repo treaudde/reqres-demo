@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'user'], function () {
+    Route::post('login', ['uses' => 'ReqResUserController@login']);
+    Route::post('create-user', ['uses' => 'ReqResUserController@createUser']);
+    Route::get('list-users', ['uses' => 'ReqResUserController@listUsers']);
 });
