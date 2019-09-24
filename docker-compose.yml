@@ -9,8 +9,9 @@ services:
       - ./src:/var/www/html
       - ./config/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
     environment:
-      REDIS_HOST: regres-redis
+      REDIS_HOST: reqres-redis
       REQRES_URL: 'https://reqres.in'
+      CACHE_DRIVER: 'redis'
 
   reqres-redis:
     container_name: reqres-redis
