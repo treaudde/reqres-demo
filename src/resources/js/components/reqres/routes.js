@@ -22,7 +22,7 @@ export const routes = [
     {path: '/list-users', component: ListComponent, name: 'list-users', beforeEnter: (to, from, next) => {
         if(!isLoggedIn()) {
             alert('Not logged in!');
-            next({'name': 'list-users'});
+            next({'name': 'login'});
         }
         next();
     }},
