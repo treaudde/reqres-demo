@@ -9,17 +9,35 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 /**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ * ROUTER CONFIGURATION
  */
+let VueRouter = require('vue-router').default;
+const routes = require('./components/reqres/routes.js').routes;
+let NProgress = require('nprogress');
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+Vue.use(VueRouter);
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+const router = new VueRouter({
+    routes
+});
+
+//loader for route transition
+router.beforeResolve( (to, from, next) => {
+    if(to.name) {
+        NProgress.start();
+    }
+
+    next();
+})
+
+router.afterEach((to, from) => {
+    NProgress.done();
+})
+
+
+Vue.component('login-form', require('./components/reqres/components/LoginComponent.vue').default);
+Vue.component('user-list', require('./components/reqres/components/ListComponent.vue').default);
+Vue.component('create-form', require('./components/reqres/components/FormComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +45,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+const reqResApp = new Vue({
+    router,
     el: '#app',
 });
