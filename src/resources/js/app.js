@@ -35,6 +35,13 @@ router.afterEach((to, from) => {
 })
 
 
+/**
+ * Configure modal
+ */
+let VModal = require('vue-js-modal').default;
+Vue.use(VModal);
+
+
 Vue.component('login-form', require('./components/reqres/components/LoginComponent.vue').default);
 Vue.component('user-list', require('./components/reqres/components/ListComponent.vue').default);
 Vue.component('create-form', require('./components/reqres/components/FormComponent.vue').default);
