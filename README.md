@@ -41,6 +41,10 @@ POST | api/user/login | calls the ReqRes.in `/api/login` endpoint
 POST | api/user/create-user | calls the ReqRes.in `api/register` endpoint
 POST | api/user/list-users | calls the ReqRes.in `api/listusers` endpoint
 
+You can log in with any user registered on the site.  And only registered users (users 
+in the list) can be used for registration.  I have been using the combination 
+`lindsay.ferguson@reqres.in / cityslicka`
+
 ## Tests
 The API backend is nearly fully tested as it was developed with Test Driven Development
 and the tests can be run with the following command:
@@ -54,3 +58,4 @@ package to cache requests using Redis.  The package can be found here:
 It is configurable for both private and public cache strategies and can be configured
 to cache based on the request properties.  It is configurable with the default laravel
 caching store configuration.
+
