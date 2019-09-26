@@ -44,7 +44,6 @@ Vue.use(VModal);
 
 Vue.component('login-form', require('./components/reqres/components/LoginComponent.vue').default);
 Vue.component('user-list', require('./components/reqres/components/ListComponent.vue').default);
-Vue.component('create-form', require('./components/reqres/components/FormComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -55,4 +54,10 @@ Vue.component('create-form', require('./components/reqres/components/FormCompone
 const reqResApp = new Vue({
     router,
     el: '#app',
+    methods: {
+        logout() {
+            sessionStorage.clear();
+            this.$router.push({name:'login'})
+        }
+    }
 });

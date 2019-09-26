@@ -1,5 +1,4 @@
 import ListComponent from './components/ListComponent.vue';
-import FormComponent from './components/FormComponent.vue';
 import LoginComponent from './components/LoginComponent.vue';
 
 //pseudo secure function, in a real api, the token would be validated by the server as well
@@ -16,15 +15,20 @@ export const routes = [
         if(isLoggedIn()) {
             next({'name': 'list-users'});
         }
-        next();
+        else{
+            next();
+        }
+
     }},
 
     {path: '/list-users', component: ListComponent, name: 'list-users', beforeEnter: (to, from, next) => {
         if(!isLoggedIn()) {
             alert('Not logged in!');
-            next({'name': 'login'});
+            next('/');
         }
-        next();
-    }},
-    {path: '/form', component: FormComponent, name: 'create-user-form'},
+        else {
+            next();
+        }
+
+    }}
 ];

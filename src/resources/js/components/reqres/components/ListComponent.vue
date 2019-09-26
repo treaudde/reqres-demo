@@ -1,16 +1,19 @@
 <template>
     <div class="container">
         <div class="row">
-
             <div class="col-8 offset-2" id="loading-div" v-if="loading">
                 <h1>Loading...</h1>
             </div>
 
             <div class="col-8 offset-2" v-if="!loading">
-                <h1>Users List</h1>
-                <p>
-                    <a class="btn btn-primary" href="#" @click.prevent.stop="showCreateNewUserForm">Create New User</a>
-                </p>
+                <div class="d-flex">
+                    <h1 class="d-flex flex-fill">Users List</h1>
+                    <p class="menu-options">
+                        <a class="btn btn-primary" href="#" @click.prevent.stop="showCreateNewUserForm">Create New User</a>
+                        <a class="btn btn-danger" href="#" @click.prevent.stop="logout">Logout</a>
+                    </p>
+                </div>
+
 
                 <div class="row">
                     <div class="col-12">
@@ -29,7 +32,8 @@
                     </div>
                 </div>
             </div>
-            <modal name="create-new-user" :click-to-close="false">
+
+            <modal name="create-new-user" :click-to-close="false" :width="'50%'" :height="'50%'">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -70,6 +74,10 @@
     }
     .avatar {
         padding-right: 10px;
+    }
+
+    .menu-options {
+        text-align: right;
     }
 </style>
 
@@ -149,6 +157,9 @@
                 document.querySelector('#submit-button').innerText = 'Create User';
                 document.querySelector('#errors').innerHTML = `<strong>${errorMessage}</strong>`;
                 return false;
+            },
+            logout() {
+                this.$root.logout();
             }
 
         }
