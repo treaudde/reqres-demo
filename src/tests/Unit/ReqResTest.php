@@ -10,10 +10,12 @@ use App\Services\ReqResService;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\FoundaÎtion\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 
 class ReqResTest extends TestCase
 {
+    use WithoutMiddleware;
     /**
      * Test a successful login
      */
